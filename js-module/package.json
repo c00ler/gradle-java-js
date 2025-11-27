@@ -1,11 +1,11 @@
 {
   "name": "js-module",
   "version": "1.0.0",
-  "description": "JavaScript module with Mocha tests",
+  "description": "JavaScript module with Jest tests",
   "scripts": {
-    "test": "mocha"
+    "test": "jest"
   },
   "devDependencies": {
-    "mocha": "^11.7.5"
+    "jest": "^30.2.0"
   }
 }
