@@ -1,24 +1,16 @@
-import com.github.gradle.node.npm.task.NpmTask
-
 plugins {
-    base
     id("com.github.node-gradle.node") version "7.1.0"
 }
 
 node {
     download.set(true)
-    version.set("20.19.5")
+    version.set("22.17.1")
 }
 
-val npmTest = tasks.register<NpmTask>("npmTest") {
-    args.set(listOf("test"))
+val npm_test by tasks.getting {
     dependsOn(tasks.npmInstall)
 }
 
-tasks.named("check") {
-    dependsOn(npmTest)
-}
-
-tasks.named("build") {
-    dependsOn(npmTest)
+val test by tasks.registering {
+    dependsOn(npm_test)
 }
