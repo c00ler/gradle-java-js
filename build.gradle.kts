@@ -1,0 +1,12 @@
+plugins {
+    base
+}
+
+group = "com.example"
+version = "1.0.0"
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
