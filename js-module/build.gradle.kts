@@ -1,28 +1,24 @@
-import org.gradle.api.tasks.Exec
+import com.github.gradle.node.npm.task.NpmTask
 
 plugins {
     base
+    id("com.github.node-gradle.node") version "7.1.0"
 }
 
-tasks.register<Exec>("npmInstall") {
-    group = "build"
-    description = "Install npm dependencies"
-    workingDir = projectDir
-    commandLine("npm", "install")
+node {
+    download.set(true)
+    version.set("20.19.5")
 }
 
-tasks.register<Exec>("test") {
-    group = "verification"
-    description = "Run JavaScript tests with Mocha"
-    workingDir = projectDir
-    commandLine("npm", "test")
-    dependsOn("npmInstall")
+val npmTest = tasks.register<NpmTask>("npmTest") {
+    args.set(listOf("test"))
+    dependsOn(tasks.npmInstall)
 }
 
 tasks.named("check") {
-    dependsOn("test")
+    dependsOn(npmTest)
 }
 
 tasks.named("build") {
-    dependsOn("test")
+    dependsOn(npmTest)
 }
