@@ -10,10 +10,3 @@ allprojects {
         mavenCentral()
     }
 }
-
-subprojects {
-    tasks.withType<JavaCompile>().configureEach {
-        sourceCompatibility = "17"
-        targetCompatibility = "17"
-    }
-}
