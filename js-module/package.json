@@ -1,0 +1,11 @@
+{
+  "name": "js-module",
+  "version": "1.0.0",
+  "description": "JavaScript module with Mocha tests",
+  "scripts": {
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "mocha": "^10.2.0"
+  }
+}
